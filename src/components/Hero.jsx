@@ -2,8 +2,8 @@ import React from 'react';
 
 const Hero = () => {
   return (
-    <section id="hero" className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white h-screen flex items-center justify-center text-center">
-      <div className="container mx-auto">
+    <section id="hero" className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen flex items-center justify-center text-center py-20">
+      <div className="container mx-auto px-4">
         <h1 className="text-5xl md:text-7xl font-extrabold mb-4">
           Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-600">Artify AI</span>
         </h1>

@@ -28,7 +28,7 @@ const Testimonials = () => {
       <p className="text-gray-600 dark:text-gray-400 mb-12">Real stories from real creators.</p>
       <div className="grid md:grid-cols-3 gap-8">
         {testimonialsData.map((testimonial, index) => (
-          <div key={index} className="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg">
+          <div key={index} className="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg dark:ring-1 dark:ring-white/10">
             <p className="italic text-gray-600 dark:text-gray-400 mb-6">"{testimonial.quote}"</p>
             <div className="flex items-center justify-center">
               <img src={testimonial.image} alt={testimonial.name} className="w-16 h-16 rounded-full mr-4 border-2 border-purple-500 dark:border-purple-400" />

@@ -34,16 +34,16 @@ const Pricing = () => {
         {pricingData.map((tier, index) => (
           <div
             key={index}
-            className={`p-8 rounded-lg shadow-lg transform transition-transform duration-300 ${
+            className={`p-8 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 ${
               tier.isFeatured
-                ? 'bg-purple-600 text-white scale-105'
-                : 'bg-white dark:bg-gray-800 hover:scale-105'
+                ? 'bg-purple-600 text-white'
+                : 'bg-white dark:bg-gray-800 dark:ring-1 dark:ring-white/10'
             }`}
           >
             <h3 className="text-2xl font-bold mb-4">{tier.plan}</h3>
             <p className="text-4xl font-extrabold mb-6">
               {tier.price}
-              <span className={`text-lg font-normal ${tier.isFeatured ? 'text-purple-200' : 'text-gray-500 dark:text-gray-400'}`}>
+              <span className={`text-lg font-normal ${tier.isFeatured ? 'text-white' : 'text-gray-500 dark:text-gray-400'}`}>
                 /mo
               </span>
             </p>

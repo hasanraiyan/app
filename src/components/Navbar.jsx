@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import ThemeSwitcher from './ThemeSwitcher';
 import { Menu, X } from 'lucide-react';
@@ -7,9 +7,19 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navLinks = ['Features', 'Showcase', 'Pricing', 'Testimonials', 'Contact'];
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => (document.body.style.overflow = 'unset');
+  }, [isMenuOpen]);
+
+
   return (
     <>
-      <nav className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white p-4 sticky top-0 z-50 shadow-md">
+      <nav className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white p-4 sticky top-0 z-60 shadow-md">
         <div className="container mx-auto flex justify-between items-center">
           <Link to="hero" smooth={true} duration={500} className="cursor-pointer">
             <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-600">
@@ -40,7 +50,7 @@ const Navbar = () => {
             </button>
           </div>
           <div className="md:hidden">
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-900 dark:text-white focus:outline-none">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="z-50 text-gray-900 dark:text-white focus:outline-none">
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -48,8 +58,8 @@ const Navbar = () => {
       </nav>
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900">
-          <ul className="flex flex-col items-center space-y-4 p-4">
+        <div className="md:hidden fixed inset-0 bg-white dark:bg-gray-900 z-50 flex flex-col items-center justify-center">
+          <ul className="flex flex-col items-center space-y-8">
             {navLinks.map((link) => (
               <li key={link}>
                 <Link
@@ -59,13 +69,21 @@ const Navbar = () => {
                   smooth={true}
                   offset={-80}
                   duration={500}
-                  className="cursor-pointer text-gray-900 dark:text-white hover:text-purple-500 dark:hover:text-purple-400 transition-colors duration-300"
+                  className="cursor-pointer text-2xl text-gray-900 dark:text-white hover:text-purple-500 dark:hover:text-purple-400 transition-colors duration-300"
                   activeClass="text-purple-500 dark:text-purple-400"
                 >
                   {link}
                 </Link>
               </li>
             ))}
+            <li className="pt-8">
+              <ThemeSwitcher />
+            </li>
+            <li>
+              <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full transition-colors duration-300 w-full">
+                Get Started
+              </button>
+            </li>
           </ul>
         </div>
       )}

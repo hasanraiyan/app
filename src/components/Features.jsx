@@ -26,7 +26,7 @@ const Features = () => {
       <p className="text-gray-600 dark:text-gray-400 mb-12">Everything you need to bring your ideas to life.</p>
       <div className="grid md:grid-cols-3 gap-8">
         {featuresData.map((feature, index) => (
-          <div key={index} className="bg-white dark:bg-gray-900 p-8 rounded-lg transform hover:scale-105 transition-transform duration-300 shadow-lg">
+          <div key={index} className="bg-white dark:bg-gray-900 p-8 rounded-lg transform hover:scale-105 transition-transform duration-300 shadow-lg dark:ring-1 dark:ring-white/10">
             {feature.icon}
             <h3 className="text-2xl font-bold mb-4">{feature.title}</h3>
             <p className="text-gray-600 dark:text-gray-400">{feature.description}</p>
